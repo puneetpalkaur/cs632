@@ -1,0 +1,55 @@
+# -*- coding: utf-8 -*-
+"""
+@author: Puneetpal Kaur
+
+Purpose: Custom classifier to mimic built-in NearestNeighborClassifier
+
+"""
+import numpy as np
+from collections import Counter
+from sklearn.metrics import accuracy_score
+class MyNearestNeighborClassifier():
+    # constructor/initializer method
+    def __init__(self,n_neighbors):
+        self.n_neighbors = n_neighbors
+    # fit method: store training data
+    def fit(self, x_train,y_train):
+        self.x_train = x_train
+        self.y_train = y_train
+    # predict method: find nearest neighbor and accuracy
+    def predict(self, x_test,y_test):
+        predicted_result =[]
+        for i in range(len(x_test)):
+            neighbors = self.find_neighbors(self.x_train,self.y_train,x_test[i])
+            predicted_result.append(self.find_mode(neighbors))
+        print("Predicted Result",predicted_result)
+        # print("Test Data",y_test)
+        print("Accuracy ",accuracy_score(y_test, predicted_result))
+    
+    def find_neighbors(self,x_train,y_train,x_test):
+        all_distances = []
+        for index in range(len(x_train)):
+            # find distance
+            dist = self.distance(x_test, x_train[index])
+            # append to list
+            all_distances.append((x_train[index], dist, y_train[index]))
+            """ distance list contains array, distance and label.
+            sort all distances in list based on distance values(second parameter)
+            using lambda x[1] to sort by distance values"""
+        all_distances.sort(key=lambda x: x[1])
+        # add first n_neighbor values of each sorted list into neighbors
+        # slice the list
+        neighbors = all_distances[:self.n_neighbors]
+        return neighbors
+    # distance method: find euclidean distance    
+    def distance(self,x_test, x_train):
+            return np.linalg.norm(np.array(x_test) - np.array(x_train))
+    #  find_mode gets the mode of labels repeating in neighbors list   
+    def find_mode(self,neighbors):
+        counter = Counter()
+        for neighbor in neighbors:
+            # count number of times one element repeats
+            # neighbor[2] is the label column in neighbors this gives (mode,frequeancy)
+            counter[neighbor[2]] += 1
+            # return one most common element (mode) 
+        return counter.most_common(1)[0][0]
