@@ -45,3 +45,47 @@ I would consider below additional features:
 * Leave’s shape and size: Iris flower plant leaves of each species are quite different from each other
 * Seed size: The seed size varies in all three species
 
+---
+
+### Part 2 a: 
+Main file: part2.py
+
+Classifier file: part1_classifier.py
+
+Assumptions: csv file names start with ‘0’ (zero) except for label. This is to differentiate label and email dataset if these all exist in same folder
+
+### Part 2 b:
+
+##### 1. What are the strengths and weaknesses of using a Bag of Words? (Tip: would this representation let you distinguish between two sentences the same words, but in adifferent order?)
+
+
+•	Strengths of BOW: 
+
+a)	It is simple and easy to implement
+
+b)	BOW is effective in document classifications
+
+•	Weaknesses of BOW: 
+
+a)	It disregards grammar and word order
+
+b)	It is susceptible to bias and poisoning as many spammers tricks BOW by including additional text in emails to make sure their email is identified as ham instead of spam
+
+c)	BOW can be less useful in cases spammer replace text of an email with an image
+
+
+##### 2. Which of your features do you think is most predictive, least predictive, and why? 
+Most predictive features can be the sender’s email, subject of email and time of the day the email was sent. 
+
+•	Most spam emails have vague email ids and domain names like ‘flordevil_pingam@t-online.de’ or ‘SergioBedpsti@’.
+
+•	Spam email subjects starts with numbers and contain percentages and can have prefixes like “Re:” even though it is not a Reply to any existing email conversation.
+
+•	Spams are usually auto generated emails sent at odd hours like at mid night and early mornings.
+
+Least predictive features can be looking for particular words or symbols. Example: does the document contains the word "drugs",because sometimes a genuine email contains the same word and can be marked as spam.
+
+	
+
+##### 3. Did your classifier misclassify any examples? Why or why not?
+Yes, my model misclassified few examples. This is because sometimes an email which is not a spam might contain words which are identified as spam words. Example: use of dollar sign in a genuine email might make it categorized as a spam.
