@@ -1,3 +1,14 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Oct 25 02:33:50 2017
+
+@author: Puneetpal Kaur
+"""
+
+""" This code demostrates reading the training and validation data
+produced by extract_cats_dogs.py
+
+You will need to have Pillow installed to display the images.
 
 http://pillow.readthedocs.io/en/3.4.x/installation.html
 """
@@ -8,6 +19,7 @@ from keras.models import Sequential
 from keras.utils import to_categorical
 from keras.layers import Conv2D, MaxPooling2D
 from keras.layers import Dense, Dropout, Activation, Flatten
+import sys
 
 TRAIN_PATH = sys.argv[1]
 VAL_PATH = sys.argv[2]
@@ -22,14 +34,12 @@ def load(npy_file):
 
 train_images, train_labels = load(TRAIN_PATH)
 val_images, val_labels = load(VAL_PATH)
-print (val_images.shape)
 
 batch_size = 32
 # two num classes for cat and dog
 num_classes = 2
-epochs = 45
+epochs = 60
 data_augmentation = True
-num_predictions = 20
 
 # Convert class vectors to binary class matrices.
 train_labels = to_categorical(train_labels, num_classes)
@@ -44,6 +54,8 @@ model.add(Activation('relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Dropout(0.25))
 model.add(Conv2D(64, (3, 3), padding='same'))
+model.add(Activation('relu'))
+model.add(Conv2D(64, (3, 3)))
 model.add(Activation('relu'))
 model.add(Conv2D(64, (3, 3)))
 model.add(Activation('relu'))
@@ -75,7 +87,7 @@ model.fit(train_images, train_labels,
               validation_data=(val_images, val_labels),
               shuffle=True)
 # Save model 
-model_path = 'model_1.h5'
+model_path = 'model_2.h5'
 model.save(model_path)
 print('Saved trained model at %s ' % model_path)
 
