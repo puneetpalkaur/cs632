@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Oct 25 02:33:50 2017
+Created on Mon Oct 23 02:33:50 2017
 
 @author: Puneetpal Kaur
 """
@@ -38,7 +38,7 @@ val_images, val_labels = load(VAL_PATH)
 batch_size = 32
 # two num classes for cat and dog
 num_classes = 2
-epochs = 60
+epochs = 65
 data_augmentation = True
 
 # Convert class vectors to binary class matrices.
@@ -87,7 +87,7 @@ model.fit(train_images, train_labels,
               validation_data=(val_images, val_labels),
               shuffle=True)
 # Save model 
-model_path = 'model_2.h5'
+model_path = 'trained_model_1.h5'
 model.save(model_path)
 print('Saved trained model at %s ' % model_path)
 
