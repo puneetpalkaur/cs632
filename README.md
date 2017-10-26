@@ -89,3 +89,21 @@ Least predictive features can be looking for particular words or symbols. Exampl
 
 ##### 3. Did your classifier misclassify any examples? Why or why not?
 Yes, my model misclassified few examples. This is because sometimes an email which is not a spam might contain words which are identified as spam words. Example: use of dollar sign in a genuine email might make it categorized as a spam.
+
+---
+# Assignment 2
+
+
+### Part 1 :
+
+Main file : train.py
+Instructions : 
+•	This file takes training data path and validation data path through command line arguements 
+•	It saves the trained model as 'trained_model_1.h5' at your default path
+
+### Part 2 :
+
+Main file : predict.py
+Instructions : 
+•	Pass the test file name and model name while running the file
+•	Output will be saved to 'predictions.txt' file at your default path
