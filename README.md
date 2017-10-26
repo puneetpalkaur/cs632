@@ -97,6 +97,7 @@ Yes, my model misclassified few examples. This is because sometimes an email whi
 ### Part 1 :
 
 Main file : train.py
+
 Instructions : 
 
 •	This file takes training data path and validation data path through command line arguements 
@@ -106,6 +107,7 @@ Instructions :
 ### Part 2 :
 
 Main file : predict.py
+
 Instructions : 
 
 •	Pass the test file name and model name while running the file
