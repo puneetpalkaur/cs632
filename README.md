@@ -113,3 +113,6 @@ Instructions :
 •	Pass the test file name and model name while running the file
 
 •	Output will be saved to 'predictions.txt' file at your default path
+
+
+Extra files uploaded: Trained model "trained_model_1.h5" and Prediction file "predictions.txt"
