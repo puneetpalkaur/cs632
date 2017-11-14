@@ -37,7 +37,7 @@ Test data is used to test the accuracy of the model. Test data helps to evaluate
 
 ##### 4. What does “supervised” refer to in “supervised classification”?
 
-Supervised means controlled. Supervised systems learn from labelled data provided by humans. In supervised classification the training data is labeled and algorithms use these labels to classify new data.
+Supervised means controlled. Supervised systems learn from labelled data. In supervised classification the training data is labelled and algorithms use these labels to classify new data.
 
 ##### 5. If you were to include additional features for the Iris dataset, what would they be, and why?
 I would consider below additional features:
